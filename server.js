@@ -2,22 +2,13 @@ import express from 'express'
 import * as dotenv from 'dotenv'
 import cors from 'cors'
 import { Configuration, OpenAIApi } from 'openai'
-import * as path from 'path'
-import { fileURLToPath } from 'url';
-import { dirname } from 'path'
 
 dotenv.config()
 
 const app = express()
-const __filename = fileURLToPath(import.meta.url); // to get the full path of current file
-const __dirname = dirname(__filename); // to get the directory name of current file
-const reactBuild = path.join(__dirname, '../client', 'dist') // path.join() to edit the current path
-// app.use(express.static(reactBuild)) // connect with frontend
-
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
 const openai = new OpenAIApi(configuration);
 
 app.use(cors())
@@ -25,7 +16,7 @@ app.use(express.json())
 
 app.get('/', async (req, res) => {
   res.status(200).send({
-    message: 'Hello from CodeX!'
+    message: 'Hello from Sourav!'
   })
 })
 
